@@ -41,7 +41,7 @@ while match == 0:
     if password == password2:
         match = 1
     else:
-        print("Password do not match, Please type them again") 
+        print("Passwords do not match, Please type them again") 
 
 
 #############################################################################
@@ -71,9 +71,11 @@ try:
         for page in reader.pages:
             writer.add_page(page)
 
-    # Save decrypted file with new name in ouput folder
+        # Save decrypted file with new name in ouput folder
         with open(f"{output_path}{filename}.pdf", "wb") as f:
             writer.write(f)
+
+        print('PDF Unlocked')
 
 except FileNotDecryptedError:
     print('################################################################################')
