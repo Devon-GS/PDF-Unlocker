@@ -6,17 +6,21 @@ from PyPDF2 import PdfReader
 from pypdf import PdfReader, PdfWriter
 from pypdf.errors import FileNotDecryptedError, PdfStreamError
 
-# Create folders
-locked_files_folder = path.exists('locked_files')
-processed_files = path.exists('processed_files')
+#############################################################################
+# CHECK FOLDERS ARE CREATED
+#############################################################################
+try:
+    locked_files_folder = path.exists('locked_files')
+    processed_files = path.exists('processed_files')
 
-if locked_files_folder == False:
-    os.mkdir('locked_files')
-if processed_files == False:
-    os.mkdir('processed_files')
-
-# Get list of files
-file_list = os.listdir('locked_files')
+    if locked_files_folder == False or processed_files == False:
+        raise e.FilesNotCreated 
+    
+except e.FilesNotCreated:
+        os.mkdir('locked_files')
+        os.mkdir('processed_files')
+        input('Files created! Please copy PDF files into locked_files and press any button to continue: ')
+        print('################################################################################')
 
 #############################################################################
 # CHECK ENTERED PASSWORD IS CORRECT
@@ -66,11 +70,14 @@ try:
             writer.write(f)
 
 except FileNotDecryptedError:
+    print('################################################################################')
     print('The files was not decrypted! Please make sure you used the correct password')
 
 except PdfStreamError:
+    print('################################################################################')
     print('There was an error decrypting your files! Please check locked_files folder for non PDF files')
 
 except e.FolderIsEmpty:
+    print('################################################################################')
     print('locked_file folder is empty!')
 
