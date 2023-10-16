@@ -1,10 +1,16 @@
 import os
 import maskpass
+from art import *
 from os import path
 import error as e
 from PyPDF2 import PdfReader
 from pypdf import PdfReader, PdfWriter
 from pypdf.errors import FileNotDecryptedError, PdfStreamError
+
+#############################################################################
+# ASCII ART
+#############################################################################
+tprint('PDF UNLOCKER')
 
 #############################################################################
 # CHECK FOLDERS ARE CREATED
