@@ -9,6 +9,10 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.10, <3.16"
 dependencies = [
+    "maskpass (>=0.3.7,<0.4.0)",
+    "art (>=6.5,<7.0)",
+    "pypdf2 (>=3.0.1,<4.0.0)",
+    "pypdf (>=6.21.1,<7.0.0)"
 ]
 
 [tool.poetry]
@@ -17,3 +21,8 @@ package-mode = false
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+build = [
+    "pyinstaller (>=6.22.3,<7.0.0)"
+]
